@@ -1,11 +1,11 @@
 ---
 title: "Elder Law"
 shortDescription: "Legal representation in elder law matters."
-image: "https://images.unsplash.com/photo-1692133226337-55e513450a32?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8YXR0b3JuZXklMjBvZmZpY2UlMjBtb2Rlcm58ZW58MHwwfHx8MTc2ODk0MzIzN3ww&ixlib=rb-4.1.0&q=80&w=1080"
+image: "https://images.unsplash.com/photo-1758518731462-d091b0b4ed0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8bGVnYWwlMjBjb25zdWx0YXRpb24lMjBtZWV0aW5nfGVufDB8MHx8fDE3Njg5NDE1ODl8MA&ixlib=rb-4.1.0&q=80&w=1080"
 
 
 
 order: 2
 ---
 
-Exceptional legal representation in elder law matters, providing sensible solutions for complex legal problems.
+Providing exceptional legal representation in the areas of elder law since 1987.

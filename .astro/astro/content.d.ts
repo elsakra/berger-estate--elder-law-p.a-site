@@ -140,22 +140,14 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"blog": {
-"contracts-that-dont-bite.md": {
-	id: "contracts-that-dont-bite.md";
-  slug: "contracts-that-dont-bite";
+		"blog": Record<string, {
+  id: string;
+  slug: string;
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"when-to-call-a-lawyer.md": {
-	id: "when-to-call-a-lawyer.md";
-  slug: "when-to-call-a-lawyer";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-};
+  data: InferEntrySchema<"blog">;
+  render(): Render[".md"];
+}>;
 "case-results": {
 "breach-of-contract.md": {
 	id: "breach-of-contract.md";
@@ -269,22 +261,14 @@ declare module 'astro:content' {
   data: InferEntrySchema<"team">
 } & { render(): Render[".md"] };
 };
-"testimonials": {
-"founder.md": {
-	id: "founder.md";
-  slug: "founder";
+"testimonials": Record<string, {
+  id: string;
+  slug: string;
   body: string;
   collection: "testimonials";
-  data: InferEntrySchema<"testimonials">
-} & { render(): Render[".md"] };
-"general-counsel.md": {
-	id: "general-counsel.md";
-  slug: "general-counsel";
-  body: string;
-  collection: "testimonials";
-  data: InferEntrySchema<"testimonials">
-} & { render(): Render[".md"] };
-};
+  data: InferEntrySchema<"testimonials">;
+  render(): Render[".md"];
+}>;
 
 	};
 

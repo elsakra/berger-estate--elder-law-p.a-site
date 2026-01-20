@@ -10,6 +10,10 @@ import { getCollection } from 'astro:content';
 const testimonials = await getCollection('testimonials');
 const featuredTestimonials = testimonials.filter(t => t.data.featured).slice(0, 2);
 
+// Get blog posts to check if we should show Insights section
+const blogPosts = await getCollection('blog');
+const hasBlogPosts = blogPosts.length > 0;
+
 const { hero, sections, company, news, resources, socialProof } = siteData;
 ---
 
@@ -150,8 +154,10 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
     </div>
   </section>
 
-  <!-- Latest Insights -->
-  <InsightsFeed headline={sections.insights?.headline || "Latest insights"} limit={5} />
+  <!-- Latest Insights (only show if there are blog posts) -->
+  {hasBlogPosts && (
+    <InsightsFeed headline={sections.insights?.headline || "Latest insights"} limit={5} />
+  )}
 
   <!-- Tabbed Services Section -->
   <TabbedServices 

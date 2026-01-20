@@ -25,19 +25,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Cooley-inspired black/white/red premium legal palette
+        // Professional navy blue palette - works for estate, elder, family, and most law firms
         primary: {
-          50: '#FFF5F5',
-          100: '#FFE3E3',
-          200: '#FFC9C9',
-          300: '#FFA8A8',
-          400: '#FF8787',
-          500: '#FF4757',  // Cooley red
-          600: '#E8384F',
-          700: '#C92A3E',
-          800: '#A91E2D',
-          900: '#8A1523',
-          950: '#4A0A12',
+          50: '#EEF2F7',
+          100: '#D9E2ED',
+          200: '#B3C5DB',
+          300: '#8DA8C9',
+          400: '#678BB7',
+          500: '#1E3A5F',  // Navy blue - professional, trustworthy
+          600: '#1A3352',
+          700: '#152B46',
+          800: '#112339',
+          900: '#0D1B2D',
+          950: '#080F19',
         },
         // Dark charcoal backgrounds
         charcoal: {

@@ -11,6 +11,19 @@ interface Props {
 const { title, description } = Astro.props;
 const pageTitle = title ? `${title} | ${siteData.company.name}` : siteData.seo.title;
 const pageDescription = description || siteData.seo.description;
+
+// Extract brand color (defaults to navy for professional services)
+const primaryColor = siteData.branding?.primaryColor || '#1e3a5f';
+// Generate color shades from the primary color
+const hexToRgb = (hex: string) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : { r: 30, g: 58, b: 95 };
+};
+const rgb = hexToRgb(primaryColor);
 ---
 
 <!DOCTYPE html>
@@ -32,6 +45,17 @@ const pageDescription = description || siteData.seo.description;
     ) : (
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     )}
+    
+    <!-- Dynamic brand colors from site.json -->
+    <style define:vars={{ 
+      'brand-primary': primaryColor,
+      'brand-rgb': `${rgb.r}, ${rgb.g}, ${rgb.b}`
+    }}>
+      :root {
+        --brand-primary: var(--brand-primary);
+        --brand-rgb: var(--brand-rgb);
+      }
+    </style>
   </head>
   <body class="bg-white text-neutral-900 font-body antialiased">
     <Header />
@@ -64,9 +88,9 @@ const pageDescription = description || siteData.seo.description;
     font-family: 'Inter', system-ui, sans-serif;
   }
   
-  /* Selection color */
+  /* Selection color - navy blue */
   ::selection {
-    background-color: rgba(255, 71, 87, 0.2);
+    background-color: rgba(30, 58, 95, 0.2);
     color: #18181B;
   }
 </style>
