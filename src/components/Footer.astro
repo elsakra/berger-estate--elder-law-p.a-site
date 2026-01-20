@@ -9,7 +9,7 @@ const { footer, company, branding } = siteData;
       <!-- Brand Column -->
       <div class="lg:col-span-2">
         <a href="/" class="flex items-center gap-3 mb-6">
-          {branding.logo && branding.logo.startsWith('http') ? (
+          {branding.logo?.startsWith('http') ? (
             <img 
               src={branding.logo} 
               alt={company.name} 

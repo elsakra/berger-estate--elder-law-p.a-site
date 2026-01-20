@@ -18,22 +18,22 @@
     "subheadline": "Our goal at Berger Estate & Elder Law, P.A. is to provide you the highest quality of legal counsel in an atmosphere of compassion and friendship.",
     "cta": {
       "label": "LEARN MORE",
-      "href": "https://www.berger-lawfirm.com/"
+      "href": "/about"
     },
     "secondaryCta": null,
-    "backgroundImage": "https://plus.unsplash.com/premium_photo-1661315485321-8e0310da42d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGVnYWwlMjBjb25zdWx0YXRpb24lMjBtZWV0aW5nfGVufDB8MHx8fDE3Njg5MjA4MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+    "backgroundImage": "https://plus.unsplash.com/premium_photo-1743020414411-e0c24b154432?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8YXR0b3JuZXklMjBvZmZpY2UlMjBtb2Rlcm58ZW58MHwwfHx8MTc2ODk0MTU4MXww&ixlib=rb-4.1.0&q=80&w=1080"
   },
   "sections": {
     "about": {
-      "headline": "About Us",
+      "headline": "Welcome!",
       "content": "Based in Leawood, Kansas, Berger Estate & Elder Law P.A. has been providing exceptional legal representation in the areas of life and estate planning, medicaid family planning, probate and trust administration and elder law since 1987. Our attorneys are dedicated to developing long-term relationships with our clients and are committed to providing you with sensible solutions for complex legal problems. Our goal is to provide the highest quality of estate planning and elder law counsel in an atmosphere of compassion and friendship.",
-      "image": "https://plus.unsplash.com/premium_photo-1661315485321-8e0310da42d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGVnYWwlMjBjb25zdWx0YXRpb24lMjBtZWV0aW5nfGVufDB8MHx8fDE3Njg5MjA4MDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+      "image": "https://plus.unsplash.com/premium_photo-1743020414634-7f9e0550ba5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGF3JTIwb2ZmaWNlJTIwaW50ZXJpb3IlMjBwcm9mZXNzaW9uYWx8ZW58MHwwfHx8MTc2ODk0MTU4MXww&ixlib=rb-4.1.0&q=80&w=1080"
     },
     "services": {
       "headline": "Practice Areas"
     },
     "team": {
-      "headline": "Our Team"
+      "headline": "Who We Are"
     },
     "testimonials": {
       "headline": "What Our Clients Say"

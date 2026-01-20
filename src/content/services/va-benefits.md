@@ -1,7 +1,7 @@
 ---
 title: "VA Benefits"
 shortDescription: "Legal assistance with VA Benefits."
-image: "https://images.unsplash.com/photo-1759038085950-1234ca8f5fed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Nnx8bGF3JTIwb2ZmaWNlJTIwaW50ZXJpb3IlMjBwcm9mZXNzaW9uYWx8ZW58MHwwfHx8MTc2ODkyMDgxNHww&ixlib=rb-4.1.0&q=80&w=1080"
+image: "https://images.unsplash.com/photo-1563457012475-13cf086fd600?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Nnx8bGVnYWwlMjBjb25zdWx0YXRpb24lMjBtZWV0aW5nfGVufDB8MHx8fDE3Njg5NDE1ODl8MA&ixlib=rb-4.1.0&q=80&w=1080"
 
 
 

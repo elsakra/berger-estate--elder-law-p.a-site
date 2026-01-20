@@ -3,6 +3,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
 import HeroVisual from '@/components/HeroVisual.astro';
+import LogoBar from '@/components/LogoBar.astro';
+import EditorialSection from '@/components/EditorialSection.astro';
 import siteData from '@/data/site.json';
 import { getCollection } from 'astro:content';
 
@@ -75,14 +77,6 @@ const suiteTabs = sortedServices.slice(0, 4).map((s) => ({
             ))}
           </div>
 
-          <div class="mt-12 border-t border-white/10 pt-6">
-            <div class="text-xs uppercase tracking-[0.22em] text-white/50">Trusted by</div>
-            <div class="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-white/60 font-semibold">
-              {["High-velocity SaaS", "Founders", "Sales teams", "Operators", "Execs"].map((x) => (
-                <span class="px-3 py-1 rounded-full border border-white/10 bg-white/[0.02]">{x}</span>
-              ))}
-            </div>
-          </div>
         </div>
 
         <div class="lg:col-span-6 lg:pt-4">
@@ -92,7 +86,20 @@ const suiteTabs = sortedServices.slice(0, 4).map((s) => ({
     </div>
   </section>
 
-  <!-- “Suite” (segmented) section -->
+  <!-- Logo Bar - Like Superhuman's company logos -->
+  <LogoBar 
+    headline="Trusted by teams at"
+    companies={siteData.trustedCompanies || [
+      { name: "OpenAI" },
+      { name: "Figma" },
+      { name: "HubSpot" },
+      { name: "Expensify" },
+      { name: "Notion" },
+      { name: "Stripe" }
+    ]}
+  />
+
+  <!-- "Suite" (segmented) section -->
   {suiteTabs.length > 0 && (
     <section class="py-20 border-t border-white/10">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -270,6 +277,19 @@ const suiteTabs = sortedServices.slice(0, 4).map((s) => ({
       </div>
     </section>
   )}
+
+  <!-- Editorial / Manifesto Section - Like Superhuman's "Becoming Superhuman" -->
+  <EditorialSection 
+    headline={siteData.sections?.editorial?.headline || "Why We Built This"}
+    content={siteData.sections?.editorial?.content || [
+      "Modern teams move fast. But legacy tools slow them down with cluttered interfaces, endless notifications, and features built for a different era.",
+      "We believe software should amplify human capability, not diminish it. It should anticipate your needs, accelerate your work, and disappear into the background when you need to focus.",
+      "Every feature we build starts with a simple question: will this help our users do their best work?",
+      "This is why we exist."
+    ]}
+    ctaLabel={siteData.sections?.editorial?.ctaLabel || "Learn about our mission"}
+    ctaHref={siteData.sections?.editorial?.ctaHref || "/about"}
+  />
 
   <!-- CTA -->
   <section class="py-20 border-t border-white/10">
