@@ -23,7 +23,7 @@ const otherServices = allServices
   .slice(0, 3);
 ---
 
-<BaseLayout title={service.data.title} description={service.data.shortDescription}>
+<BaseLayout title={service.data.title} description={service.data.shortDescription} lightHero={true}>
   <!-- Hero -->
   <section class="pt-32 pb-16 bg-gradient-to-b from-primary-50 to-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,7 +122,7 @@ const otherServices = allServices
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           headline="Other Services" 
-          description="Explore our full range of healthcare services."
+          description="Explore our full range of practice areas."
         />
         
         <div class="mt-12 grid md:grid-cols-3 gap-8">

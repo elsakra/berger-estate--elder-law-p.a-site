@@ -15,7 +15,7 @@ const { result } = Astro.props;
 const { Content } = await result.render();
 ---
 
-<BaseLayout title={result.data.title} description={result.data.outcome}>
+<BaseLayout title={result.data.title} description={result.data.outcome} lightHero={true}>
   <section class="pt-32 pb-14 bg-gradient-to-b from-primary-50 to-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center gap-2 text-sm text-slate-500 mb-6">

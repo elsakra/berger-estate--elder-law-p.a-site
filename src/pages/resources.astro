@@ -1,0 +1,125 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Button from '@/components/Button.astro';
+import siteData from '@/data/site.json';
+
+const { company, resources } = siteData;
+
+// Resource categories for boutique law firms
+const resourceCategories = [
+  {
+    title: "Educational Resources",
+    description: "Helpful guides and information to help you understand your legal options.",
+    items: [
+      { name: "Estate Planning Guide", href: "/contact", description: "Learn the basics of wills, trusts, and estate planning." },
+      { name: "Elder Law Resources", href: "/contact", description: "Information about Medicaid, long-term care, and senior benefits." },
+      { name: "Probate Process", href: "/contact", description: "What to expect when administering an estate." },
+    ]
+  },
+  {
+    title: "Community Resources",
+    description: "Local organizations and services that may be helpful to you and your family.",
+    items: [
+      { name: "Senior Services", href: "/contact", description: "Local agencies and programs for seniors." },
+      { name: "Healthcare Resources", href: "/contact", description: "Medical and wellness services in your area." },
+      { name: "Support Groups", href: "/contact", description: "Community support for caregivers and families." },
+    ]
+  }
+];
+---
+
+<BaseLayout title="Resources" lightHero={true}>
+  <!-- Hero -->
+  <section class="pt-32 pb-16 bg-gradient-to-b from-primary-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-slate-900">
+          Resources
+        </h1>
+        <p class="mt-6 text-xl text-slate-600 leading-relaxed">
+          Helpful information and resources to guide you through your legal journey.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Resources from site.json -->
+  {resources && resources.length > 0 && (
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display text-2xl font-bold text-slate-900 mb-8">Quick Links</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {resources.map((resource) => (
+            <a 
+              href={resource.href}
+              class="block p-6 bg-primary-50 rounded-xl hover:bg-primary-100 transition-colors"
+            >
+              <h3 class="font-display text-lg font-bold text-slate-900">
+                {resource.title}
+              </h3>
+              <p class="mt-2 text-slate-600 text-sm">
+                {resource.description}
+              </p>
+              <span class="mt-4 inline-flex items-center text-primary-600 font-medium text-sm">
+                {resource.cta || "Learn more"}
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Resource Categories -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {resourceCategories.map((category, idx) => (
+        <div class:list={["", idx > 0 && "mt-16"]}>
+          <h2 class="font-display text-2xl font-bold text-slate-900">
+            {category.title}
+          </h2>
+          <p class="mt-2 text-slate-600">
+            {category.description}
+          </p>
+          <div class="mt-8 grid md:grid-cols-3 gap-6">
+            {category.items.map((item) => (
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="font-semibold text-slate-900">{item.name}</h3>
+                <p class="mt-2 text-slate-600 text-sm">{item.description}</p>
+                <a 
+                  href={item.href}
+                  class="mt-4 inline-flex items-center text-primary-600 font-medium text-sm hover:text-primary-700"
+                >
+                  Learn more
+                  <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display text-3xl font-bold text-white">
+        Have Questions?
+      </h2>
+      <p class="mt-4 text-xl text-primary-200">
+        We're here to help. Contact us for a free consultation.
+      </p>
+      <div class="mt-8">
+        <Button href="/contact" style="white" size="lg">
+          Contact Us
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
