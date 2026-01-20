@@ -8,4 +8,4 @@ image: "https://images.unsplash.com/photo-1730701878011-a423ec61c328?crop=entrop
 order: 3
 ---
 
-Providing exceptional legal representation in the areas of probate and trust administration since 1987.
+Providing exceptional legal representation in probate and trust administration since 1987.

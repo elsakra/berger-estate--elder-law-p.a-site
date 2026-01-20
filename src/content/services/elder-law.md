@@ -8,4 +8,4 @@ image: "https://images.unsplash.com/photo-1692133226337-55e513450a32?crop=entrop
 order: 2
 ---
 
-Providing exceptional legal representation in the areas of elder law since 1987.
+Providing exceptional legal representation in elder law matters since 1987.

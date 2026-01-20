@@ -14,6 +14,10 @@ const featuredTestimonials = testimonials.filter(t => t.data.featured).slice(0, 
 const blogPosts = await getCollection('blog');
 const hasBlogPosts = blogPosts.length > 0;
 
+// Get services to check if we should show Practice Areas section
+const services = await getCollection('services');
+const hasServices = services.length > 0;
+
 const { hero, sections, company, news, resources, socialProof } = siteData;
 ---
 
@@ -61,7 +65,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
     
     <!-- Hero Content -->
     <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
-      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary-500 tracking-tight leading-none">
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-none">
         {hero.headline}
       </h1>
       {hero.subheadline && (
@@ -77,20 +81,6 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
         <span class="text-xs uppercase tracking-widest">Scroll</span>
         <div class="w-px h-16 bg-gradient-to-b from-neutral-500 to-transparent"></div>
       </div>
-    </div>
-    
-    <!-- Navigation Arrows (Cooley style) -->
-    <div class="absolute bottom-12 right-8 flex gap-4 z-10">
-      <button class="p-2 border border-neutral-700 text-neutral-500 hover:border-primary-500 hover:text-primary-500 transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button class="p-2 border border-neutral-700 text-neutral-500 hover:border-primary-500 hover:text-primary-500 transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
     </div>
   </section>
 
@@ -159,12 +149,14 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
     <InsightsFeed headline={sections.insights?.headline || "Latest insights"} limit={5} />
   )}
 
-  <!-- Tabbed Services Section -->
-  <TabbedServices 
-    headline={sections.services?.headline}
-    practicesHeadline={sections.services?.practicesHeadline}
-    industriesHeadline={sections.services?.industriesHeadline}
-  />
+  <!-- Tabbed Services Section (only show if there are services) -->
+  {hasServices && (
+    <TabbedServices 
+      headline={sections.services?.headline}
+      practicesHeadline={sections.services?.practicesHeadline}
+      industriesHeadline={sections.services?.industriesHeadline}
+    />
+  )}
 
   <!-- Stats Section -->
   {socialProof?.stats && (

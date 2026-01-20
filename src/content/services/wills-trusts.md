@@ -8,4 +8,4 @@ image: "https://plus.unsplash.com/premium_photo-1743020414395-865b7f527417?crop=
 order: 5
 ---
 
-Legal services for wills and trusts as part of estate planning representation.
+Legal services for wills and trusts as part of comprehensive estate planning.

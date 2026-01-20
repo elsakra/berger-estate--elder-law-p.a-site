@@ -21,12 +21,12 @@
       "href": "/about"
     },
     "secondaryCta": null,
-    "backgroundImage": "https://plus.unsplash.com/premium_photo-1743020414634-7f9e0550ba5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGF3JTIwb2ZmaWNlJTIwaW50ZXJpb3IlMjBwcm9mZXNzaW9uYWx8ZW58MHwwfHx8MTc2ODk0NjQ3Mnww&ixlib=rb-4.1.0&q=80&w=1080"
+    "backgroundImage": "https://plus.unsplash.com/premium_photo-1661315485321-8e0310da42d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGVnYWwlMjBjb25zdWx0YXRpb24lMjBtZWV0aW5nfGVufDB8MHx8fDE3Njg5MjA4MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
   },
   "sections": {
     "about": {
       "headline": "About Us",
-      "content": "Based in Leawood, Kansas, Berger Estate & Elder Law P.A. has been providing exceptional legal representation in the areas of life and estate planning, medicaid family planning, probate and trust administration and elder law since 1987. Our attorneys are dedicated to developing long-term relationships with our clients and are committed to providing you with sensible solutions for complex legal problems. Our goal is to provide the highest quality of estate planning and elder law counsel in an atmosphere of compassion and friendship.",
+      "content": "Based in Leawood, Kansas, Berger Estate & Elder Law P.A. has been providing exceptional legal representation in the areas of life and estate planning, medicaid family planning, probate and trust administration and elder law since 1987. Our attorneys are dedicated to developing long-term relationships with our clients and are committed to providing you with sensible solutions for complex legal problems. Life & Estate Planning is the process through which we help you plan for future events. We help you think through and make important decisions about your own life, the lives of your loved ones', and the control of your assets during and after your lifetime.",
       "image": "https://plus.unsplash.com/premium_photo-1661315485321-8e0310da42d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGVnYWwlMjBjb25zdWx0YXRpb24lMjBtZWV0aW5nfGVufDB8MHx8fDE3Njg5MjA4MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "values": [
         {
@@ -86,7 +86,7 @@
     {
       "title": "Senior Resource Center",
       "description": "Free information and resources on estate planning, aging, and services for seniors.",
-      "href": "/contact",
+      "href": "/resources",
       "cta": "Learn more"
     },
     {
@@ -104,7 +104,7 @@
     {
       "title": "Upcoming Events",
       "description": "Join us for educational seminars and workshops on estate planning and elder law topics.",
-      "href": "/contact",
+      "href": "/resources",
       "cta": "View events"
     }
   ]

@@ -8,4 +8,4 @@ image: "https://images.unsplash.com/photo-1701790646175-570c00bbe969?crop=entrop
 order: 4
 ---
 
-Providing exceptional legal representation in the areas of medicaid family planning since 1987.
+Providing exceptional legal representation in medicaid family planning since 1987.
