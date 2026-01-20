@@ -21,10 +21,10 @@ const pageDescription = description || siteData.seo.description;
     <meta name="description" content={pageDescription} />
     <title>{pageTitle}</title>
     
-    <!-- Fonts -->
+    <!-- Fonts: Playfair Display for headlines, Inter for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
     
     <!-- Favicon - use logo if it's a CDN URL, otherwise fallback to static -->
     {siteData.branding?.logo?.includes('cloudinary') || siteData.branding?.logo?.includes('http') ? (
@@ -33,7 +33,7 @@ const pageDescription = description || siteData.seo.description;
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     )}
   </head>
-  <body class="bg-[#070A12] text-white font-body antialiased">
+  <body class="bg-white text-neutral-900 font-body antialiased">
     <Header />
     <main>
       <slot />
@@ -57,10 +57,16 @@ const pageDescription = description || siteData.seo.description;
   }
   
   .font-display {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: 'Playfair Display', Georgia, serif;
   }
   
   .font-body {
     font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  /* Selection color */
+  ::selection {
+    background-color: rgba(255, 71, 87, 0.2);
+    color: #18181B;
   }
 </style>

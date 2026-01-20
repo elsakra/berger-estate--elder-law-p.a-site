@@ -1,0 +1,143 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  headline?: string;
+  practicesHeadline?: string;
+  industriesHeadline?: string;
+}
+
+const { 
+  headline = "Key Services",
+  practicesHeadline = "Practices",
+  industriesHeadline = "Industries"
+} = Astro.props;
+
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+
+// Group into practices and industries (if tagged)
+const practices = sortedServices.filter(s => !s.data.category || s.data.category === 'practice');
+const industries = sortedServices.filter(s => s.data.category === 'industry');
+---
+
+<section class="bg-neutral-50 py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <h2 class="font-display text-3xl md:text-4xl text-charcoal-950 mb-12">{headline}</h2>
+    
+    <!-- Tab Buttons -->
+    <div class="flex gap-1 mb-8" role="tablist">
+      <button 
+        type="button"
+        class="tab-button px-6 py-3 text-sm font-medium border-b-2 transition-colors active"
+        data-tab="practices"
+        role="tab"
+        aria-selected="true"
+      >
+        {practicesHeadline}
+      </button>
+      {industries.length > 0 && (
+        <button 
+          type="button"
+          class="tab-button px-6 py-3 text-sm font-medium border-b-2 transition-colors"
+          data-tab="industries"
+          role="tab"
+          aria-selected="false"
+        >
+          {industriesHeadline}
+        </button>
+      )}
+    </div>
+    
+    <!-- Practices Tab -->
+    <div class="tab-content" id="practices-tab" role="tabpanel">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {practices.map((service) => (
+          <a 
+            href={`/services/${service.slug}`}
+            class="group flex items-center justify-between p-5 bg-white border border-neutral-200 hover:border-primary-500 hover:shadow-lg transition-all"
+          >
+            <h3 class="font-display text-lg text-charcoal-950 group-hover:text-primary-500 transition-colors">
+              {service.data.title}
+            </h3>
+            <svg class="w-5 h-5 text-neutral-400 group-hover:text-primary-500 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Industries Tab -->
+    {industries.length > 0 && (
+      <div class="tab-content hidden" id="industries-tab" role="tabpanel">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {industries.map((service) => (
+            <a 
+              href={`/services/${service.slug}`}
+              class="group flex items-center justify-between p-5 bg-white border border-neutral-200 hover:border-primary-500 hover:shadow-lg transition-all"
+            >
+              <h3 class="font-display text-lg text-charcoal-950 group-hover:text-primary-500 transition-colors">
+                {service.data.title}
+              </h3>
+              <svg class="w-5 h-5 text-neutral-400 group-hover:text-primary-500 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+    
+    <!-- View All Links -->
+    <div class="flex gap-6 mt-8">
+      <a href="/services" class="inline-flex items-center gap-2 text-primary-500 font-medium hover:gap-3 transition-all">
+        View all practices
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tab-button {
+    color: #737373;
+    border-color: transparent;
+  }
+  
+  .tab-button:hover {
+    color: #18181B;
+  }
+  
+  .tab-button.active {
+    color: #FF4757;
+    border-color: #FF4757;
+  }
+</style>
+
+<script>
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+      
+      // Update buttons
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      button.classList.add('active');
+      button.setAttribute('aria-selected', 'true');
+      
+      // Update content
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+      document.getElementById(`${tabId}-tab`)?.classList.remove('hidden');
+    });
+  });
+</script>

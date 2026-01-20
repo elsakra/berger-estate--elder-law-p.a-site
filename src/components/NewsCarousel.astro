@@ -1,0 +1,63 @@
+---
+interface NewsItem {
+  headline: string;
+  href: string;
+  type?: string;
+}
+
+interface Props {
+  items: NewsItem[];
+}
+
+const { items } = Astro.props;
+
+// Duplicate items for infinite scroll effect
+const duplicatedItems = [...items, ...items];
+---
+
+<section class="bg-charcoal-900 py-6 overflow-hidden">
+  <div class="relative">
+    <!-- Gradient masks -->
+    <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-charcoal-900 to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-charcoal-900 to-transparent z-10 pointer-events-none"></div>
+    
+    <!-- Scrolling container -->
+    <div class="flex animate-slide-left" style="width: max-content;">
+      {duplicatedItems.map((item, index) => (
+        <a 
+          href={item.href}
+          class="group flex items-center gap-4 px-8 whitespace-nowrap hover:text-primary-500 transition-colors"
+          key={index}
+        >
+          {item.type && (
+            <span class="text-xs font-medium text-primary-500 uppercase tracking-wider">
+              {item.type}
+            </span>
+          )}
+          <span class="text-white text-sm md:text-base font-medium group-hover:text-primary-500 transition-colors">
+            {item.headline}
+          </span>
+          <svg class="w-4 h-4 text-neutral-600 group-hover:text-primary-500 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+          <span class="text-neutral-700 mx-4">|</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes slideLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .animate-slide-left {
+    animation: slideLeft 40s linear infinite;
+  }
+  
+  .animate-slide-left:hover {
+    animation-play-state: paused;
+  }
+</style>

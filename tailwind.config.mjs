@@ -25,56 +25,97 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Superhuman-inspired: deep dark + electric accents
+        // Cooley-inspired black/white/red premium legal palette
         primary: {
-          50: '#F5F3FF',
-          100: '#EDE9FE',
-          200: '#DDD6FE',
-          300: '#C4B5FD',
-          400: '#A78BFA',
-          500: '#8B5CF6',
-          600: '#7C3AED',
-          700: '#6D28D9',
-          800: '#5B21B6',
-          900: '#4C1D95',
-          950: '#2E1065',
+          50: '#FFF5F5',
+          100: '#FFE3E3',
+          200: '#FFC9C9',
+          300: '#FFA8A8',
+          400: '#FF8787',
+          500: '#FF4757',  // Cooley red
+          600: '#E8384F',
+          700: '#C92A3E',
+          800: '#A91E2D',
+          900: '#8A1523',
+          950: '#4A0A12',
         },
-        accent: {
-          50: '#ECFEFF',
-          100: '#CFFAFE',
-          200: '#A5F3FC',
-          300: '#67E8F9',
-          400: '#22D3EE',
-          500: '#06B6D4',
-          600: '#0891B2',
-          700: '#0E7490',
-          800: '#155E75',
-          900: '#164E63',
+        // Dark charcoal backgrounds
+        charcoal: {
+          50: '#F7F7F8',
+          100: '#EEEEF0',
+          200: '#D9D9DD',
+          300: '#B8B8BF',
+          400: '#91919C',
+          500: '#737381',
+          600: '#5D5D69',
+          700: '#4C4C56',
+          800: '#414149',
+          900: '#27272B',  // Near black for sections
+          950: '#18181B',  // Deep black
         },
-        slate: {
-          50: '#F8FAFC',
-          100: '#F1F5F9',
-          200: '#E2E8F0',
-          300: '#CBD5E1',
-          400: '#94A3B8',
-          500: '#64748B',
-          600: '#475569',
-          700: '#334155',
-          800: '#1E293B',
-          900: '#0F172A',
+        // Neutral grays
+        neutral: {
+          50: '#FAFAFA',
+          100: '#F5F5F5',
+          200: '#E5E5E5',
+          300: '#D4D4D4',
+          400: '#A3A3A3',
+          500: '#737373',
+          600: '#525252',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
+        },
+        // Success/warning for badges
+        success: {
+          50: '#ECFDF5',
+          500: '#10B981',
+          600: '#059669',
+        },
+        warning: {
+          50: '#FFFBEB',
+          500: '#F59E0B',
+          600: '#D97706',
         },
       },
       fontFamily: {
-        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        // Serif for headlines (premium legal feel)
+        display: ['Playfair Display', 'Georgia', 'serif'],
+        // Clean sans-serif for body
         body: ['Inter', 'system-ui', 'sans-serif'],
+        // Monospace for badges/tags
+        mono: ['JetBrains Mono', 'Menlo', 'monospace'],
       },
       fontSize: {
         '4.5xl': ['2.5rem', { lineHeight: '1.15' }],
         '5.5xl': ['3.25rem', { lineHeight: '1.1' }],
+        '6.5xl': ['4rem', { lineHeight: '1.05' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
+        '8xl': ['6rem', { lineHeight: '1' }],
       },
       boxShadow: {
         'card': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
         'card-hover': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        'glow': '0 0 40px rgba(255, 71, 87, 0.15)',
+      },
+      animation: {
+        'slide-left': 'slideLeft 30s linear infinite',
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'fade-up': 'fadeUp 0.6s ease-out forwards',
+      },
+      keyframes: {
+        slideLeft: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
     },
   },

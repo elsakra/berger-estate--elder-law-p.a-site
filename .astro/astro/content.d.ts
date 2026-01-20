@@ -141,51 +141,65 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"get-to-inbox-zero.md": {
-	id: "get-to-inbox-zero.md";
-  slug: "get-to-inbox-zero";
+"contracts-that-dont-bite.md": {
+	id: "contracts-that-dont-bite.md";
+  slug: "contracts-that-dont-bite";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"when-to-call-a-lawyer.md": {
+	id: "when-to-call-a-lawyer.md";
+  slug: "when-to-call-a-lawyer";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
-"faq": {
-"migration.md": {
-	id: "migration.md";
-  slug: "migration";
+"case-results": {
+"breach-of-contract.md": {
+	id: "breach-of-contract.md";
+  slug: "breach-of-contract";
   body: string;
-  collection: "faq";
-  data: InferEntrySchema<"faq">
+  collection: "case-results";
+  data: InferEntrySchema<"case-results">
 } & { render(): Render[".md"] };
-"security.md": {
-	id: "security.md";
-  slug: "security";
+"emergency-injunction.md": {
+	id: "emergency-injunction.md";
+  slug: "emergency-injunction";
   body: string;
-  collection: "faq";
-  data: InferEntrySchema<"faq">
+  collection: "case-results";
+  data: InferEntrySchema<"case-results">
+} & { render(): Render[".md"] };
+"executive-severance.md": {
+	id: "executive-severance.md";
+  slug: "executive-severance";
+  body: string;
+  collection: "case-results";
+  data: InferEntrySchema<"case-results">
 } & { render(): Render[".md"] };
 };
-"pricing-plans": {
-"enterprise.md": {
-	id: "enterprise.md";
-  slug: "enterprise";
+"faq": {
+"do-you-offer-free-consultations.md": {
+	id: "do-you-offer-free-consultations.md";
+  slug: "do-you-offer-free-consultations";
   body: string;
-  collection: "pricing-plans";
-  data: InferEntrySchema<"pricing-plans">
+  collection: "faq";
+  data: InferEntrySchema<"faq">
 } & { render(): Render[".md"] };
-"pro.md": {
-	id: "pro.md";
-  slug: "pro";
+"how-does-intake-work.md": {
+	id: "how-does-intake-work.md";
+  slug: "how-does-intake-work";
   body: string;
-  collection: "pricing-plans";
-  data: InferEntrySchema<"pricing-plans">
+  collection: "faq";
+  data: InferEntrySchema<"faq">
 } & { render(): Render[".md"] };
-"starter.md": {
-	id: "starter.md";
-  slug: "starter";
+"how-long-does-a-case-take.md": {
+	id: "how-long-does-a-case-take.md";
+  slug: "how-long-does-a-case-take";
   body: string;
-  collection: "pricing-plans";
-  data: InferEntrySchema<"pricing-plans">
+  collection: "faq";
+  data: InferEntrySchema<"faq">
 } & { render(): Render[".md"] };
 };
 "services": {
@@ -232,6 +246,29 @@ declare module 'astro:content' {
   data: InferEntrySchema<"services">
 } & { render(): Render[".md"] };
 };
+"team": {
+"amanda-hawthorne.md": {
+	id: "amanda-hawthorne.md";
+  slug: "amanda-hawthorne";
+  body: string;
+  collection: "team";
+  data: InferEntrySchema<"team">
+} & { render(): Render[".md"] };
+"david-cole.md": {
+	id: "david-cole.md";
+  slug: "david-cole";
+  body: string;
+  collection: "team";
+  data: InferEntrySchema<"team">
+} & { render(): Render[".md"] };
+"sofia-park.md": {
+	id: "sofia-park.md";
+  slug: "sofia-park";
+  body: string;
+  collection: "team";
+  data: InferEntrySchema<"team">
+} & { render(): Render[".md"] };
+};
 "testimonials": {
 "founder.md": {
 	id: "founder.md";
@@ -240,9 +277,9 @@ declare module 'astro:content' {
   collection: "testimonials";
   data: InferEntrySchema<"testimonials">
 } & { render(): Render[".md"] };
-"sales-lead.md": {
-	id: "sales-lead.md";
-  slug: "sales-lead";
+"general-counsel.md": {
+	id: "general-counsel.md";
+  slug: "general-counsel";
   body: string;
   collection: "testimonials";
   data: InferEntrySchema<"testimonials">

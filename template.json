@@ -1,30 +1,35 @@
 {
-  "id": "saas-superhuman",
-  "name": "Superhuman-inspired SaaS",
-  "industry": "saas",
-  "tags": ["saas", "software", "productivity", "email", "ai", "high-velocity", "startup", "enterprise", "pricing-plans"],
-  "description": "High-contrast, Superhuman-inspired single-product SaaS template with strong typography, modular feature storytelling, pricing, and conversion-first CTAs.",
+  "id": "legal-firm",
+  "name": "Legal Firm (Cooley)",
+  "industry": "legal",
+  "tags": ["law", "attorney", "litigation", "corporate", "defense", "practice-areas", "thought-leadership", "big-law"],
+  "description": "Premium big-law template inspired by Cooley.com. Features full-bleed video hero, news carousel, tabbed practices/industries, insights feed, and mega-nav with search overlay. Black/white/red color scheme with sophisticated serif typography.",
   "status": "approved",
   "heroMedia": "either",
   "pages": [
-    "home",
+    "index",
+    "about",
     "services",
-    "pricing",
+    "services/[slug]",
+    "case-results",
+    "case-results/[slug]",
     "blog",
+    "blog/[slug]",
     "contact",
     "faq",
     "privacy",
     "terms"
   ],
   "contentCollections": [
+    "team",
     "services",
     "blog",
     "testimonials",
     "faq",
-    "pricing-plans"
+    "case-results"
   ],
   "previewUrl": null,
-  "sourceInspiration": "https://superhuman.com/",
+  "sourceInspiration": "https://www.cooley.com/",
   "createdAt": "2026-01-19",
-  "updatedAt": "2026-01-19"
+  "updatedAt": "2026-01-20"
 }

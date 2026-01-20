@@ -1,0 +1,48 @@
+---
+interface Resource {
+  title: string;
+  description: string;
+  href: string;
+  cta?: string;
+}
+
+interface Props {
+  headline?: string;
+  resources: Resource[];
+}
+
+const { headline = "Resources", resources } = Astro.props;
+---
+
+<section class="bg-charcoal-950 py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <h2 class="font-display text-3xl md:text-4xl text-white mb-12">{headline}</h2>
+    
+    <div class="grid md:grid-cols-3 gap-6">
+      {resources.map((resource, index) => (
+        <a 
+          href={resource.href}
+          class="group block bg-charcoal-900 p-8 hover:bg-charcoal-800 transition-colors relative overflow-hidden"
+        >
+          <!-- Accent line -->
+          <div class="absolute top-0 left-0 w-full h-1 bg-primary-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+          
+          <h3 class="font-display text-2xl text-white mb-4 group-hover:text-primary-500 transition-colors">
+            {resource.title}
+          </h3>
+          <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+            {resource.description}
+          </p>
+          {resource.cta && (
+            <span class="inline-flex items-center gap-2 text-primary-500 text-sm font-medium group-hover:gap-3 transition-all">
+              {resource.cta}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
