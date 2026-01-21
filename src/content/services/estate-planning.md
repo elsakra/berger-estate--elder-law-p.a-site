@@ -1,7 +1,7 @@
 ---
 title: "Estate Planning"
 shortDescription: "Planning for future events and control of your assets during and after your lifetime."
-image: "https://plus.unsplash.com/premium_photo-1661315485321-8e0310da42d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGVnYWwlMjBjb25zdWx0YXRpb24lMjBtZWV0aW5nfGVufDB8MHx8fDE3Njg5NDE1ODl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+image: "https://plus.unsplash.com/premium_photo-1674727219372-4ba6644106bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGF3JTIwbGlicmFyeSUyMGJvb2tzfGVufDB8MHx8fDE3Njg5NjEyODJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
 
 
 
