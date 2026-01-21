@@ -223,15 +223,14 @@ declare module 'astro:content' {
   data: InferEntrySchema<"services">
 } & { render(): Render[".md"] };
 };
-"team": {
-"jesse-brown.md": {
-	id: "jesse-brown.md";
-  slug: "jesse-brown";
+"team": Record<string, {
+  id: string;
+  slug: string;
   body: string;
   collection: "team";
-  data: InferEntrySchema<"team">
-} & { render(): Render[".md"] };
-};
+  data: InferEntrySchema<"team">;
+  render(): Render[".md"];
+}>;
 "testimonials": Record<string, {
   id: string;
   slug: string;

@@ -98,4 +98,270 @@ const rgb = hexToRgb(primaryColor);
     background-color: rgba(30, 58, 95, 0.2);
     color: #18181B;
   }
+
+  /* =========================================================================
+     WOW FACTOR ANIMATIONS - Scroll Reveals
+     ========================================================================= */
+  
+  /* Scroll reveal base - elements start hidden */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Staggered children - add delays */
+  [data-reveal-stagger] > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  [data-reveal-stagger].revealed > *:nth-child(1) { transition-delay: 0ms; }
+  [data-reveal-stagger].revealed > *:nth-child(2) { transition-delay: 80ms; }
+  [data-reveal-stagger].revealed > *:nth-child(3) { transition-delay: 160ms; }
+  [data-reveal-stagger].revealed > *:nth-child(4) { transition-delay: 240ms; }
+  [data-reveal-stagger].revealed > *:nth-child(5) { transition-delay: 320ms; }
+  [data-reveal-stagger].revealed > *:nth-child(6) { transition-delay: 400ms; }
+  
+  [data-reveal-stagger].revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Slide from left */
+  [data-reveal="left"] {
+    transform: translateX(-40px);
+  }
+  [data-reveal="left"].revealed {
+    transform: translateX(0);
+  }
+  
+  /* Slide from right */
+  [data-reveal="right"] {
+    transform: translateX(40px);
+  }
+  [data-reveal="right"].revealed {
+    transform: translateX(0);
+  }
+  
+  /* Scale up */
+  [data-reveal="scale"] {
+    transform: scale(0.95);
+  }
+  [data-reveal="scale"].revealed {
+    transform: scale(1);
+  }
+
+  /* =========================================================================
+     MICRO-INTERACTIONS - Buttons & Cards
+     ========================================================================= */
+  
+  /* Premium button hover - glow + lift */
+  .btn-primary,
+  a[class*="bg-primary"] {
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease,
+                background-color 0.2s ease;
+  }
+  
+  .btn-primary:hover,
+  a[class*="bg-primary"]:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 40px -10px rgba(var(--brand-rgb), 0.5),
+                0 4px 20px -8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-primary:active,
+  a[class*="bg-primary"]:active {
+    transform: translateY(0) scale(0.98);
+  }
+  
+  /* Card hover - lift with depth */
+  .card-hover,
+  [data-card] {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease;
+  }
+  
+  .card-hover:hover,
+  [data-card]:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15),
+                0 12px 24px -8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Link underline animation */
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  /* =========================================================================
+     CINEMATIC EFFECTS - Grain & Light Sweep
+     ========================================================================= */
+  
+  /* Animated film grain overlay */
+  .grain-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    animation: grain 8s steps(10) infinite;
+  }
+  
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    20% { transform: translate(-15%, 5%); }
+    30% { transform: translate(7%, -25%); }
+    40% { transform: translate(-5%, 25%); }
+    50% { transform: translate(-15%, 10%); }
+    60% { transform: translate(15%, 0%); }
+    70% { transform: translate(0%, 15%); }
+    80% { transform: translate(3%, 35%); }
+    90% { transform: translate(-10%, 10%); }
+  }
+  
+  /* Light sweep effect for headlines */
+  .light-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .light-sweep::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    animation: sweep 4s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  
+  @keyframes sweep {
+    0% { left: -100%; }
+    50%, 100% { left: 200%; }
+  }
+  
+  /* Gradient shift animation */
+  .gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-move 15s ease infinite;
+  }
+  
+  @keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Subtle parallax helper */
+  .parallax-slow {
+    will-change: transform;
+  }
+
+  /* =========================================================================
+     IMAGE REVEAL - Mask animation
+     ========================================================================= */
+  
+  [data-image-reveal] {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  [data-image-reveal]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--brand-primary, #1e3a5f);
+    transform: scaleX(1);
+    transform-origin: right;
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  
+  [data-image-reveal].revealed::after {
+    transform: scaleX(0);
+  }
+  
+  [data-image-reveal] img {
+    transform: scale(1.1);
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  [data-image-reveal].revealed img {
+    transform: scale(1);
+  }
 </style>
+
+<script>
+  // Scroll reveal observer
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-stagger], [data-image-reveal]');
+  
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  revealElements.forEach(el => revealObserver.observe(el));
+  
+  // Subtle parallax on hero backgrounds
+  const parallaxElements = document.querySelectorAll('.parallax-slow');
+  
+  if (parallaxElements.length > 0) {
+    let ticking = false;
+    
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          parallaxElements.forEach(el => {
+            const speed = 0.3;
+            (el as HTMLElement).style.transform = `translateY(${scrollY * speed}px)`;
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+</script>

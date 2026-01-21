@@ -8,4 +8,4 @@ image: "https://images.unsplash.com/photo-1730701878011-a423ec61c328?crop=entrop
 order: 3
 ---
 
-Legal representation in the areas of probate and trust administration.
+Providing exceptional legal representation in probate and trust administration.

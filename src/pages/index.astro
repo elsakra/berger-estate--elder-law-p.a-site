@@ -22,12 +22,12 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
 ---
 
 <BaseLayout>
-  <!-- Hero Section - Editorial split layout -->
-  <section class="relative min-h-screen bg-charcoal-950 overflow-hidden">
-    <!-- Background Video/Image -->
+  <!-- Hero Section - Editorial split layout with cinematic effects -->
+  <section class="relative min-h-[85vh] bg-charcoal-950 overflow-hidden grain-overlay">
+    <!-- Background Video/Image with parallax -->
     {hero.backgroundVideo ? (
       <video
-        class="absolute inset-0 w-full h-full object-cover opacity-35"
+        class="absolute inset-0 w-full h-full object-cover opacity-35 parallax-slow"
         autoplay
         muted
         loop
@@ -41,12 +41,11 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
       <img 
         src={hero.backgroundImage} 
         alt=""
-        class="absolute inset-0 w-full h-full object-cover opacity-35"
+        class="absolute inset-0 w-full h-full object-cover opacity-35 parallax-slow"
       />
     ) : (
-      <!-- Abstract gradient background when no media -->
-      <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-br from-charcoal-950 via-charcoal-900 to-charcoal-950"></div>
+      <!-- Abstract gradient background with animation -->
+      <div class="absolute inset-0 gradient-shift" style="background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);">
         <div class="absolute -top-24 left-1/4 w-[28rem] h-[28rem] bg-primary-500/10 rounded-full blur-[120px]"></div>
         <div class="absolute -bottom-24 right-1/4 w-[22rem] h-[22rem] bg-primary-500/10 rounded-full blur-[120px]"></div>
       </div>
@@ -66,15 +65,15 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
       </button>
     )}
     
-    <!-- Hero Content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-24 lg:pt-40 lg:pb-32">
+    <!-- Hero Content with animations -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-16 lg:pt-32 lg:pb-20">
       <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-end">
-        <div>
+        <div data-reveal-stagger>
           <div class="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-neutral-400">
             <span class="h-px w-10 bg-primary-500/70"></span>
             <span>{company.tagline || "Estate & Elder Law"}</span>
           </div>
-          <h1 class="mt-6 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[0.95]">
+          <h1 class="mt-6 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[0.95] light-sweep">
             {hero.headline}
           </h1>
           <p class="mt-6 text-lg sm:text-xl md:text-2xl text-neutral-300 max-w-2xl leading-relaxed">
@@ -83,7 +82,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
           <div class="mt-10 flex flex-wrap gap-4">
             <a 
               href={hero.cta?.href || "/contact"}
-              class="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-white font-semibold tracking-tight shadow-[0_12px_30px_-20px_rgba(255,71,87,0.7)] hover:bg-primary-400 transition-colors"
+              class="btn-primary inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-white font-semibold tracking-tight"
             >
               {hero.cta?.label || "Contact Us"}
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,14 +92,14 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
             {company.phone && (
               <a 
                 href={`tel:${company.phone.replace(/[^\\d+]/g, '')}`}
-                class="inline-flex items-center gap-2 px-7 py-4 border border-white/20 text-white font-semibold tracking-tight hover:border-white/50 hover:bg-white/5 transition-colors"
+                class="inline-flex items-center gap-2 px-7 py-4 border border-white/20 text-white font-semibold tracking-tight hover:border-white/50 hover:bg-white/5 transition-all hover:scale-105"
               >
                 {company.phone}
               </a>
             )}
           </div>
         </div>
-        <div class="bg-white/5 border border-white/10 p-8 lg:p-10 backdrop-blur-sm">
+        <div class="bg-white/5 border border-white/10 p-8 lg:p-10 backdrop-blur-sm card-hover" data-reveal="right">
           <div class="text-sm uppercase tracking-[0.25em] text-neutral-400">Practice focus</div>
           <div class="mt-4 space-y-3 text-white/90">
             <div class="flex items-center gap-3">
@@ -149,7 +148,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
   <section class="relative overflow-hidden">
     <div class="grid lg:grid-cols-2">
       <!-- Image/Visual Side -->
-      <div class="bg-primary-500 min-h-[400px] lg:min-h-[600px] relative">
+      <div class="bg-primary-500 min-h-[400px] lg:min-h-[600px] relative" data-image-reveal>
         <div class="absolute inset-0 flex items-center justify-center">
           <div class="text-white/10 font-display text-[20rem] font-bold leading-none select-none">
             &
@@ -159,7 +158,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
       
       <!-- Content Side -->
       <div class="bg-charcoal-900 py-16 lg:py-24 px-8 lg:px-16 flex items-center">
-        <div class="max-w-lg">
+        <div class="max-w-lg" data-reveal>
           <h2 class="font-display text-3xl md:text-4xl text-white mb-6">
             {sections.about.headline}
           </h2>
@@ -168,7 +167,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
           </p>
           
           {sections.about.values && (
-            <div class="space-y-4">
+            <div class="space-y-4" data-reveal-stagger>
               {sections.about.values.slice(0, 3).map((value) => (
                 <div class="flex gap-4">
                   <div class="w-1 bg-primary-500 flex-shrink-0"></div>
@@ -181,7 +180,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
             </div>
           )}
           
-          <a href="/about" class="inline-flex items-center gap-2 mt-8 text-primary-500 font-medium hover:gap-3 transition-all">
+          <a href="/about" class="inline-flex items-center gap-2 mt-8 text-primary-500 font-medium link-underline hover:gap-3 transition-all">
             Learn more about us
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -210,7 +209,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
   {socialProof?.stats && (
     <section class="bg-charcoal-950 py-24">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12" data-reveal-stagger>
           {socialProof.stats.map((stat) => (
             <div class="text-center">
               <p class="font-display text-4xl md:text-5xl lg:text-6xl text-primary-500">
@@ -230,13 +229,13 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
   {featuredTestimonials.length > 0 && (
     <section class="bg-white py-24">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 class="font-display text-3xl md:text-4xl text-charcoal-950 mb-12">
+        <h2 class="font-display text-3xl md:text-4xl text-charcoal-950 mb-12" data-reveal>
           {sections.testimonials?.headline || "What our clients say"}
         </h2>
         
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
           {featuredTestimonials.map((testimonial) => (
-            <div class="bg-neutral-50 p-8 md:p-10">
+            <div class="bg-neutral-50 p-8 md:p-10 card-hover" data-card>
               <blockquote class="text-lg text-charcoal-800 leading-relaxed mb-6">
                 "{testimonial.data.quote || testimonial.body}"
               </blockquote>
@@ -264,9 +263,9 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
 
   <!-- CTA Section -->
   {sections.cta && (
-    <section class="bg-primary-500 py-24">
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-white">
+    <section class="bg-primary-500 py-24 grain-overlay relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10" data-reveal="scale">
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-white light-sweep">
           {sections.cta.headline}
         </h2>
         {sections.cta.description && (
@@ -277,7 +276,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
         <div class="mt-10 flex flex-wrap justify-center gap-4">
           <a 
             href={sections.cta.cta.href}
-            class="inline-flex items-center gap-2 px-8 py-4 bg-white text-charcoal-900 font-semibold hover:bg-neutral-100 transition-colors"
+            class="btn-primary inline-flex items-center gap-2 px-8 py-4 bg-white text-charcoal-900 font-semibold"
           >
             {sections.cta.cta.label}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -287,7 +286,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
           {sections.cta.secondaryCta && (
             <a 
               href={sections.cta.secondaryCta.href}
-              class="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold hover:bg-white/10 transition-colors"
+              class="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold hover:bg-white/10 hover:scale-105 transition-all"
             >
               {sections.cta.secondaryCta.label}
             </a>
