@@ -14,7 +14,7 @@ const { lightHero = false } = Astro.props;
   <nav class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 relative z-50">
+      <a href="/" class="logo-wrap flex items-center gap-3 relative z-50 px-3 py-2 rounded-full">
         {branding?.logo?.startsWith('http') ? (
           <img 
             src={branding.logo} 
@@ -206,7 +206,8 @@ const { lightHero = false } = Astro.props;
   .header-link:hover { color: white; }
   .header-icon { color: rgba(255, 255, 255, 0.8); }
   .header-icon:hover { color: white; }
-  .header-logo { filter: brightness(0) invert(1); }
+  .header-logo { filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4)); }
+  .logo-wrap { background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(6px); }
   
   /* Light page state - dark text for pages with light hero backgrounds */
   .header-light-page .header-text { color: #18181B; }
@@ -215,6 +216,7 @@ const { lightHero = false } = Astro.props;
   .header-light-page .header-icon { color: #525252; }
   .header-light-page .header-icon:hover { color: #18181B; }
   .header-light-page .header-logo { filter: none; }
+  .header-light-page .logo-wrap { background: transparent; }
   
   /* Scrolled state - dark text for white background */
   .header-scrolled .header-text { color: #18181B; }
@@ -223,13 +225,15 @@ const { lightHero = false } = Astro.props;
   .header-scrolled .header-icon { color: #525252; }
   .header-scrolled .header-icon:hover { color: #18181B; }
   .header-scrolled .header-logo { filter: none; }
+  .header-scrolled .logo-wrap { background: transparent; }
   .header-scrolled { background-color: rgba(255, 255, 255, 0.98); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
   
   /* Menu open state - always white text on dark overlay */
   .menu-open .header-text { color: white !important; }
   .menu-open .header-link { color: rgba(255, 255, 255, 0.8) !important; }
   .menu-open .header-icon { color: rgba(255, 255, 255, 0.8) !important; }
-  .menu-open .header-logo { filter: brightness(0) invert(1) !important; }
+  .menu-open .header-logo { filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4)) !important; }
+  .menu-open .logo-wrap { background: rgba(255, 255, 255, 0.06) !important; }
   .menu-open { background-color: transparent !important; box-shadow: none !important; }
 </style>
 

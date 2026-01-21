@@ -58,7 +58,7 @@ const rgb = hexToRgb(primaryColor);
       }
     </style>
   </head>
-  <body class="bg-white text-neutral-900 font-body antialiased">
+  <body class="bg-white text-charcoal-950 font-body antialiased leading-relaxed">
     <Header lightHero={lightHero} />
     <main>
       <slot />
@@ -87,6 +87,10 @@ const rgb = hexToRgb(primaryColor);
   
   .font-body {
     font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    letter-spacing: -0.01em;
   }
   
   /* Selection color - navy blue */

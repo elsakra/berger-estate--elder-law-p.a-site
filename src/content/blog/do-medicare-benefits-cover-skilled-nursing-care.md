@@ -6,9 +6,10 @@ excerpt: "Choosing the right kind of posthospital care under Medicare's rules ca
 publishedAt: "2026-01-01"
 
 tags:
-  - "medicare"
+  - "Medicare"
   - "skilled nursing"
   - "healthcare coverage"
+  - "elder care"
 category: "Medicare"
 ---
 

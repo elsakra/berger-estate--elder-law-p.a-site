@@ -22,12 +22,12 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
 ---
 
 <BaseLayout>
-  <!-- Hero Section - Full bleed with video/image background -->
-  <section class="relative min-h-screen flex items-center justify-center bg-charcoal-950 overflow-hidden">
+  <!-- Hero Section - Editorial split layout -->
+  <section class="relative min-h-screen bg-charcoal-950 overflow-hidden">
     <!-- Background Video/Image -->
     {hero.backgroundVideo ? (
       <video
-        class="absolute inset-0 w-full h-full object-cover opacity-40"
+        class="absolute inset-0 w-full h-full object-cover opacity-35"
         autoplay
         muted
         loop
@@ -41,16 +41,19 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
       <img 
         src={hero.backgroundImage} 
         alt=""
-        class="absolute inset-0 w-full h-full object-cover opacity-40"
+        class="absolute inset-0 w-full h-full object-cover opacity-35"
       />
     ) : (
       <!-- Abstract gradient background when no media -->
       <div class="absolute inset-0">
         <div class="absolute inset-0 bg-gradient-to-br from-charcoal-950 via-charcoal-900 to-charcoal-950"></div>
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary-500/5 rounded-full blur-3xl"></div>
+        <div class="absolute -top-24 left-1/4 w-[28rem] h-[28rem] bg-primary-500/10 rounded-full blur-[120px]"></div>
+        <div class="absolute -bottom-24 right-1/4 w-[22rem] h-[22rem] bg-primary-500/10 rounded-full blur-[120px]"></div>
       </div>
     )}
+
+    <!-- Editorial overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-charcoal-950/90 via-charcoal-950/75 to-charcoal-950/40"></div>
     
     <!-- Video Controls -->
     {hero.backgroundVideo && (
@@ -64,22 +67,67 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
     )}
     
     <!-- Hero Content -->
-    <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
-      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-none">
-        {hero.headline}
-      </h1>
-      {hero.subheadline && (
-        <p class="mt-8 text-xl md:text-2xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
-          {hero.subheadline}
-        </p>
-      )}
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-24 lg:pt-40 lg:pb-32">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-end">
+        <div>
+          <div class="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-neutral-400">
+            <span class="h-px w-10 bg-primary-500/70"></span>
+            <span>{company.tagline || "Estate & Elder Law"}</span>
+          </div>
+          <h1 class="mt-6 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[0.95]">
+            {hero.headline}
+          </h1>
+          <p class="mt-6 text-lg sm:text-xl md:text-2xl text-neutral-300 max-w-2xl leading-relaxed">
+            {hero.subheadline || company.description}
+          </p>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a 
+              href={hero.cta?.href || "/contact"}
+              class="inline-flex items-center gap-2 px-7 py-4 bg-primary-500 text-white font-semibold tracking-tight shadow-[0_12px_30px_-20px_rgba(255,71,87,0.7)] hover:bg-primary-400 transition-colors"
+            >
+              {hero.cta?.label || "Contact Us"}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            {company.phone && (
+              <a 
+                href={`tel:${company.phone.replace(/[^\\d+]/g, '')}`}
+                class="inline-flex items-center gap-2 px-7 py-4 border border-white/20 text-white font-semibold tracking-tight hover:border-white/50 hover:bg-white/5 transition-colors"
+              >
+                {company.phone}
+              </a>
+            )}
+          </div>
+        </div>
+        <div class="bg-white/5 border border-white/10 p-8 lg:p-10 backdrop-blur-sm">
+          <div class="text-sm uppercase tracking-[0.25em] text-neutral-400">Practice focus</div>
+          <div class="mt-4 space-y-3 text-white/90">
+            <div class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+              <span>Estate Planning</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+              <span>Elder Law & Medicaid</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+              <span>Probate & Trust Administration</span>
+            </div>
+          </div>
+          <div class="mt-8 text-sm text-neutral-400">
+            {company.address?.city ? `${company.address.city}, ${company.address.state}` : company.address?.state}
+          </div>
+        </div>
+      </div>
     </div>
     
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
-      <div class="flex flex-col items-center gap-4 text-neutral-500">
-        <span class="text-xs uppercase tracking-widest">Scroll</span>
-        <div class="w-px h-16 bg-gradient-to-b from-neutral-500 to-transparent"></div>
+    <div class="absolute bottom-10 left-8 z-10 hidden md:block">
+      <div class="flex items-center gap-4 text-neutral-500">
+        <span class="text-xs uppercase tracking-[0.25em]">Scroll</span>
+        <div class="w-16 h-px bg-gradient-to-r from-neutral-500 to-transparent"></div>
       </div>
     </div>
   </section>

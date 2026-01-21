@@ -9,6 +9,7 @@ tags:
   - "home care"
   - "elder care"
   - "aging in place"
+  - "caregiving"
 category: "Elder Care"
 ---
 
