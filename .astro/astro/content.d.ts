@@ -194,6 +194,13 @@ declare module 'astro:content' {
   collection: "services";
   data: InferEntrySchema<"services">
 } & { render(): Render[".md"] };
+"life-estate-planning.md": {
+	id: "life-estate-planning.md";
+  slug: "life-estate-planning";
+  body: string;
+  collection: "services";
+  data: InferEntrySchema<"services">
+} & { render(): Render[".md"] };
 "medicaid-family-planning.md": {
 	id: "medicaid-family-planning.md";
   slug: "medicaid-family-planning";
