@@ -9,7 +9,7 @@ tags:
   - "Medicare"
   - "2026 changes"
   - "prescription drugs"
-  - "healthcare policy"
+  - "healthcare"
 category: "Medicare"
 ---
 

@@ -9,7 +9,6 @@ tags:
   - "Medicare"
   - "skilled nursing"
   - "healthcare coverage"
-  - "elder care"
 category: "Medicare"
 ---
 
