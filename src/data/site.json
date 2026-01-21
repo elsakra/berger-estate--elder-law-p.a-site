@@ -1,7 +1,7 @@
 {
   "company": {
     "name": "Berger Estate & Elder Law P.A.",
-    "tagline": "Trusted Council - Proactive Solutions™",
+    "tagline": "Trusted Council - Proactive Solutions",
     "description": "Based in Leawood, Kansas, Berger Estate & Elder Law P.A. has been providing exceptional legal representation in the areas of life and estate planning, medicaid family planning, probate and trust administration and elder law since 1987. Our attorneys are dedicated to developing long-term relationships with our clients and are committed to providing you with sensible solutions for complex legal problems.",
     "phone": "(913) 491-6332",
     "email": "info@berger-lawfirm.com",
@@ -25,21 +25,21 @@
   },
   "sections": {
     "about": {
-      "headline": "About Us",
+      "headline": "Who We Are",
       "content": "Based in Leawood, Kansas, Berger Estate & Elder Law P.A. has been providing exceptional legal representation in the areas of life and estate planning, medicaid family planning, probate and trust administration and elder law since 1987. Our attorneys are dedicated to developing long-term relationships with our clients and are committed to providing you with sensible solutions for complex legal problems. Our goal is to provide the highest quality of estate planning and elder law counsel in an atmosphere of compassion and friendship.",
-      "image": "https://plus.unsplash.com/premium_photo-1661315485321-8e0310da42d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGVnYWwlMjBjb25zdWx0YXRpb24lMjBtZWV0aW5nfGVufDB8MHx8fDE3Njg5MjA4MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "image": "https://plus.unsplash.com/premium_photo-1674727219372-4ba6644106bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bGF3JTIwbGlicmFyeSUyMGJvb2tzfGVufDB8MHx8fDE3Njg5Njc2NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "values": [
         {
           "title": "Free Consultations",
           "description": "We offer free consultations and make in home visits upon request"
         },
         {
-          "title": "Senior Resource Center",
-          "description": "Free information and resources on estate planning, aging and available services for seniors"
-        },
-        {
           "title": "Over 30 Years Experience",
           "description": "Providing trusted counsel and proactive solutions throughout Kansas City since 1987"
+        },
+        {
+          "title": "Senior Resource Center",
+          "description": "Educational opportunities and resources for clients and the community"
         }
       ]
     },

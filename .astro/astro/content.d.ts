@@ -140,14 +140,29 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"blog": Record<string, {
-  id: string;
-  slug: string;
+		"blog": {
+"do-medicare-benefits-cover-skilled-nursing-care.md": {
+	id: "do-medicare-benefits-cover-skilled-nursing-care.md";
+  slug: "do-medicare-benefits-cover-skilled-nursing-care";
   body: string;
   collection: "blog";
-  data: InferEntrySchema<"blog">;
-  render(): Render[".md"];
-}>;
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"how-medicare-changes-in-2026-will-affect-older-adults.md": {
+	id: "how-medicare-changes-in-2026-will-affect-older-adults.md";
+  slug: "how-medicare-changes-in-2026-will-affect-older-adults";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"when-to-hire-a-home-care-service-for-an-older-adult.md": {
+	id: "when-to-hire-a-home-care-service-for-an-older-adult.md";
+  slug: "when-to-hire-a-home-care-service-for-an-older-adult";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+};
 "case-results": Record<string, {
   id: string;
   slug: string;
@@ -208,14 +223,15 @@ declare module 'astro:content' {
   data: InferEntrySchema<"services">
 } & { render(): Render[".md"] };
 };
-"team": Record<string, {
-  id: string;
-  slug: string;
+"team": {
+"jesse-brown.md": {
+	id: "jesse-brown.md";
+  slug: "jesse-brown";
   body: string;
   collection: "team";
-  data: InferEntrySchema<"team">;
-  render(): Render[".md"];
-}>;
+  data: InferEntrySchema<"team">
+} & { render(): Render[".md"] };
+};
 "testimonials": Record<string, {
   id: string;
   slug: string;
