@@ -40,12 +40,14 @@ const { footer, company, branding } = siteData;
       <div class="lg:col-span-1">
         <a href="/" class="block mb-6">
           {branding?.logo?.startsWith('http') ? (
-            <img 
-              src={branding.logo} 
-              alt={company.name} 
-              class="h-8 w-auto brightness-0 invert"
-              onerror="this.style.display='none'"
-            />
+            <span class="inline-flex items-center rounded-md bg-white/95 px-3 py-2 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.6)]">
+              <img 
+                src={branding.logo} 
+                alt={company.name} 
+                class="h-8 w-auto"
+                onerror="this.style.display='none'"
+              />
+            </span>
           ) : (
             <span class="font-display text-xl font-semibold text-white">
               {company.name}
