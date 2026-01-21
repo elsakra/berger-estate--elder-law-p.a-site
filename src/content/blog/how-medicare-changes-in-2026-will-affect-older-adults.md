@@ -6,7 +6,7 @@ excerpt: "Medicare is rolling out several important changes in 2026 that are int
 publishedAt: "2026-01-01"
 
 tags:
-  - "Medicare"
+  - "medicare"
   - "2026 changes"
   - "prescription drugs"
   - "healthcare"
