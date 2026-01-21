@@ -19,6 +19,9 @@ const services = await getCollection('services');
 const hasServices = services.length > 0;
 
 const { hero, sections, company, news, resources, socialProof } = siteData;
+const heroHeadline = hero?.headline || '';
+const heroHeadlineWords = heroHeadline.trim().split(/\s+/).filter(Boolean).length;
+const isLongHeroHeadline = heroHeadline.length >= 60 || heroHeadlineWords >= 9;
 ---
 
 <BaseLayout>
@@ -73,7 +76,15 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
             <span class="h-px w-10 bg-primary-500/70"></span>
             <span>{company.tagline || "Estate & Elder Law"}</span>
           </div>
-          <h1 class="mt-6 font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[0.95] light-sweep">
+          <h1
+            class:list={[
+              "mt-6 font-display text-white tracking-tight light-sweep",
+              // Ensure hero stays above fold when headline is long
+              isLongHeroHeadline
+                ? "text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.98]"
+                : "text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95]",
+            ]}
+          >
             {hero.headline}
           </h1>
           <p class="mt-6 text-lg sm:text-xl md:text-2xl text-neutral-300 max-w-2xl leading-relaxed">
@@ -138,10 +149,13 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
 
   <!-- Resources Grid -->
   {resources && resources.length > 0 && (
-    <ResourcesGrid 
-      headline="Resources" 
-      resources={resources} 
-    />
+    <>
+      <div class="section-divider"></div>
+      <ResourcesGrid 
+        headline="Resources" 
+        resources={resources} 
+      />
+    </>
   )}
 
   <!-- Diversity/Values Section (Cooley-style accent section) -->
@@ -150,39 +164,43 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
       <!-- Image/Visual Side -->
       <div class="bg-primary-500 min-h-[400px] lg:min-h-[600px] relative" data-image-reveal>
         <div class="absolute inset-0 flex items-center justify-center">
-          <div class="text-white/10 font-display text-[20rem] font-bold leading-none select-none">
+          <div class="text-white/10 font-display text-[18rem] lg:text-[24rem] font-bold leading-none select-none animate-pulse" style="animation-duration: 4s;">
             &
           </div>
         </div>
+        <!-- Floating accent shapes -->
+        <div class="absolute top-12 left-12 w-24 h-24 border-2 border-white/20 rotate-12"></div>
+        <div class="absolute bottom-16 right-16 w-16 h-16 bg-white/10 rounded-full"></div>
       </div>
       
       <!-- Content Side -->
-      <div class="bg-charcoal-900 py-16 lg:py-24 px-8 lg:px-16 flex items-center">
-        <div class="max-w-lg" data-reveal>
-          <h2 class="font-display text-3xl md:text-4xl text-white mb-6">
+      <div class="bg-charcoal-900 py-20 lg:py-28 px-8 lg:px-16 flex items-center">
+        <div class="max-w-xl" data-reveal>
+          <span class="section-label text-neutral-500">About Our Firm</span>
+          <h2 class="headline-lg text-4xl md:text-5xl lg:text-6xl text-white mt-6 mb-8">
             {sections.about.headline}
           </h2>
-          <p class="text-neutral-300 leading-relaxed mb-8">
+          <p class="text-neutral-300 text-lg leading-loose mb-10">
             {sections.about.content}
           </p>
           
           {sections.about.values && (
-            <div class="space-y-4" data-reveal-stagger>
+            <div class="space-y-6" data-reveal-stagger>
               {sections.about.values.slice(0, 3).map((value) => (
-                <div class="flex gap-4">
-                  <div class="w-1 bg-primary-500 flex-shrink-0"></div>
+                <div class="flex gap-5 group">
+                  <div class="w-1 bg-primary-500/50 group-hover:bg-primary-500 flex-shrink-0 transition-colors"></div>
                   <div>
-                    <h3 class="font-semibold text-white">{value.title}</h3>
-                    <p class="text-sm text-neutral-400 mt-1">{value.description}</p>
+                    <h3 class="font-semibold text-white text-lg">{value.title}</h3>
+                    <p class="text-neutral-400 mt-1 leading-relaxed">{value.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           )}
           
-          <a href="/about" class="inline-flex items-center gap-2 mt-8 text-primary-500 font-medium link-underline hover:gap-3 transition-all">
+          <a href="/about" class="inline-flex items-center gap-2 mt-10 text-primary-500 font-semibold text-lg link-underline hover:gap-3 transition-all">
             Learn more about us
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
@@ -207,15 +225,20 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
 
   <!-- Stats Section -->
   {socialProof?.stats && (
-    <section class="bg-charcoal-950 py-24">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12" data-reveal-stagger>
+    <section class="bg-charcoal-950 py-28 lg:py-36 relative overflow-hidden grain-overlay">
+      <!-- Background decoration -->
+      <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500 rounded-full blur-[150px]"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-primary-500 rounded-full blur-[120px]"></div>
+      </div>
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-16" data-reveal-stagger>
           {socialProof.stats.map((stat) => (
-            <div class="text-center">
-              <p class="font-display text-4xl md:text-5xl lg:text-6xl text-primary-500">
+            <div class="text-center group">
+              <p class="headline-xl text-5xl md:text-6xl lg:text-7xl text-primary-500 group-hover:scale-105 transition-transform">
                 {stat.value}
               </p>
-              <p class="mt-2 text-neutral-400 text-sm uppercase tracking-wider">
+              <p class="mt-4 text-neutral-400 text-sm uppercase tracking-[0.2em]">
                 {stat.label}
               </p>
             </div>
@@ -227,28 +250,37 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
 
   <!-- Testimonials -->
   {featuredTestimonials.length > 0 && (
-    <section class="bg-white py-24">
+    <section class="bg-neutral-50 py-28 lg:py-36">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 class="font-display text-3xl md:text-4xl text-charcoal-950 mb-12" data-reveal>
-          {sections.testimonials?.headline || "What our clients say"}
-        </h2>
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16" data-reveal>
+          <div>
+            <span class="section-label">Client Stories</span>
+            <h2 class="headline-lg text-4xl md:text-5xl lg:text-6xl text-charcoal-950 mt-4">
+              {sections.testimonials?.headline || "What our clients say"}
+            </h2>
+          </div>
+          <div class="accent-divider hidden md:block"></div>
+        </div>
         
-        <div class="grid md:grid-cols-2 gap-8" data-reveal-stagger>
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12" data-reveal-stagger>
           {featuredTestimonials.map((testimonial) => (
-            <div class="bg-neutral-50 p-8 md:p-10 card-hover" data-card>
-              <blockquote class="text-lg text-charcoal-800 leading-relaxed mb-6">
+            <div class="bg-white p-10 md:p-12 card-accent border border-neutral-200" data-card>
+              <svg class="w-10 h-10 text-primary-500/30 mb-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+              </svg>
+              <blockquote class="text-xl md:text-2xl text-charcoal-800 leading-relaxed mb-8 font-display">
                 "{testimonial.data.quote || testimonial.body}"
               </blockquote>
-              <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-charcoal-200 rounded-full flex items-center justify-center">
-                  <span class="text-charcoal-600 font-semibold text-lg">
+              <div class="flex items-center gap-4 pt-6 border-t border-neutral-100">
+                <div class="w-14 h-14 bg-primary-500/10 rounded-full flex items-center justify-center">
+                  <span class="text-primary-600 font-bold text-xl">
                     {testimonial.data.author?.charAt(0) || "?"}
                   </span>
                 </div>
                 <div>
-                  <p class="font-semibold text-charcoal-900">{testimonial.data.author}</p>
+                  <p class="font-semibold text-charcoal-900 text-lg">{testimonial.data.author}</p>
                   {(testimonial.data.role || testimonial.data.company) && (
-                    <p class="text-sm text-neutral-500">
+                    <p class="text-neutral-500">
                       {[testimonial.data.role, testimonial.data.company].filter(Boolean).join(' · ')}
                     </p>
                   )}
@@ -263,20 +295,25 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
 
   <!-- CTA Section -->
   {sections.cta && (
-    <section class="bg-primary-500 py-24 grain-overlay relative overflow-hidden">
-      <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10" data-reveal="scale">
-        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-white light-sweep">
+    <section class="bg-primary-500 py-28 lg:py-36 grain-overlay relative overflow-hidden">
+      <!-- Decorative elements -->
+      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+      <div class="absolute -top-20 -right-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-white/5 rounded-full blur-3xl"></div>
+      
+      <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center relative z-10" data-reveal="scale">
+        <h2 class="headline-xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white light-sweep">
           {sections.cta.headline}
         </h2>
         {sections.cta.description && (
-          <p class="mt-6 text-xl text-white/80">
+          <p class="mt-8 text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">
             {sections.cta.description}
           </p>
         )}
-        <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <div class="mt-12 flex flex-wrap justify-center gap-5">
           <a 
             href={sections.cta.cta.href}
-            class="btn-primary inline-flex items-center gap-2 px-8 py-4 bg-white text-charcoal-900 font-semibold"
+            class="btn-primary inline-flex items-center gap-3 px-10 py-5 bg-white text-charcoal-900 font-semibold text-lg rounded-sm"
           >
             {sections.cta.cta.label}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -286,7 +323,7 @@ const { hero, sections, company, news, resources, socialProof } = siteData;
           {sections.cta.secondaryCta && (
             <a 
               href={sections.cta.secondaryCta.href}
-              class="inline-flex items-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold hover:bg-white/10 hover:scale-105 transition-all"
+              class="inline-flex items-center gap-3 px-10 py-5 border-2 border-white text-white font-semibold text-lg hover:bg-white/10 hover:scale-105 transition-all rounded-sm"
             >
               {sections.cta.secondaryCta.label}
             </a>

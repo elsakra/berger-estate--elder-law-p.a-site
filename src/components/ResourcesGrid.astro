@@ -14,33 +14,41 @@ interface Props {
 const { headline = "Resources", resources } = Astro.props;
 ---
 
-<section class="bg-charcoal-950 py-28">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="mb-12">
-      <div class="inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-neutral-400">
-        <span class="h-px w-10 bg-primary-500/70"></span>
-        <span>Resources</span>
-      </div>
-      <h2 class="mt-5 font-display text-4xl sm:text-5xl text-white tracking-tight">{headline}</h2>
+<section class="bg-charcoal-950 py-28 lg:py-36 relative overflow-hidden">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 opacity-30">
+    <div class="absolute top-1/4 -left-20 w-80 h-80 bg-primary-500/5 rounded-full blur-[100px]"></div>
+    <div class="absolute bottom-1/4 -right-20 w-60 h-60 bg-primary-500/5 rounded-full blur-[80px]"></div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="mb-16" data-reveal>
+      <span class="section-label text-neutral-500">Resources</span>
+      <h2 class="headline-lg text-4xl sm:text-5xl lg:text-6xl text-white mt-6">{headline}</h2>
     </div>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {resources.map((resource) => (
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" data-reveal-stagger>
+      {resources.map((resource, idx) => (
         <a 
           href={resource.href}
-          class="group relative block bg-charcoal-900/70 border border-white/5 p-8 transition-all hover:-translate-y-1 hover:border-primary-500/40 hover:shadow-[0_20px_60px_-30px_rgba(0,0,0,0.8)]"
+          class="group relative block bg-charcoal-900/80 border-l-4 border-l-transparent border border-white/5 p-8 lg:p-10 transition-all hover:-translate-y-2 hover:border-l-primary-500 hover:bg-charcoal-900 hover:shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)]"
         >
-          <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <!-- Decorative number -->
+          <span class="absolute top-6 right-6 text-6xl font-display text-white/5 select-none">
+            {String(idx + 1).padStart(2, '0')}
+          </span>
+          
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div class="relative">
-            <h3 class="font-display text-2xl text-white mb-4 group-hover:text-primary-400 transition-colors">
+            <h3 class="font-display text-2xl lg:text-3xl text-white mb-5 group-hover:text-primary-400 transition-colors">
               {resource.title}
             </h3>
-            <p class="text-neutral-400 text-sm leading-relaxed mb-6">
+            <p class="text-neutral-400 leading-relaxed mb-8">
               {resource.description}
             </p>
-            <span class="inline-flex items-center gap-2 text-primary-400 text-sm font-medium group-hover:gap-3 transition-all">
+            <span class="inline-flex items-center gap-2 text-primary-400 font-semibold group-hover:gap-4 transition-all">
               {resource.cta || "Learn more"}
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </span>
