@@ -156,29 +156,14 @@ declare module 'astro:content' {
   data: InferEntrySchema<"case-results">;
   render(): Render[".md"];
 }>;
-"faq": {
-"do-you-offer-free-consultations.md": {
-	id: "do-you-offer-free-consultations.md";
-  slug: "do-you-offer-free-consultations";
+"faq": Record<string, {
+  id: string;
+  slug: string;
   body: string;
   collection: "faq";
-  data: InferEntrySchema<"faq">
-} & { render(): Render[".md"] };
-"how-does-intake-work.md": {
-	id: "how-does-intake-work.md";
-  slug: "how-does-intake-work";
-  body: string;
-  collection: "faq";
-  data: InferEntrySchema<"faq">
-} & { render(): Render[".md"] };
-"how-long-does-a-case-take.md": {
-	id: "how-long-does-a-case-take.md";
-  slug: "how-long-does-a-case-take";
-  body: string;
-  collection: "faq";
-  data: InferEntrySchema<"faq">
-} & { render(): Render[".md"] };
-};
+  data: InferEntrySchema<"faq">;
+  render(): Render[".md"];
+}>;
 "services": {
 "elder-law.md": {
 	id: "elder-law.md";
@@ -243,7 +228,72 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		
+		"athletics": Record<string, {
+  id: string;
+  collection: "athletics";
+  data: any;
+}>;
+"events": Record<string, {
+  id: string;
+  collection: "events";
+  data: any;
+}>;
+"faculty": Record<string, {
+  id: string;
+  collection: "faculty";
+  data: any;
+}>;
+"industries": Record<string, {
+  id: string;
+  collection: "industries";
+  data: any;
+}>;
+"insights": Record<string, {
+  id: string;
+  collection: "insights";
+  data: any;
+}>;
+"listings": Record<string, {
+  id: string;
+  collection: "listings";
+  data: any;
+}>;
+"locations": Record<string, {
+  id: string;
+  collection: "locations";
+  data: any;
+}>;
+"menu": Record<string, {
+  id: string;
+  collection: "menu";
+  data: any;
+}>;
+"news": Record<string, {
+  id: string;
+  collection: "news";
+  data: any;
+}>;
+"portfolio": Record<string, {
+  id: string;
+  collection: "portfolio";
+  data: any;
+}>;
+"pricing-plans": Record<string, {
+  id: string;
+  collection: "pricing-plans";
+  data: any;
+}>;
+"products": Record<string, {
+  id: string;
+  collection: "products";
+  data: any;
+}>;
+"programs": Record<string, {
+  id: string;
+  collection: "programs";
+  data: any;
+}>;
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
