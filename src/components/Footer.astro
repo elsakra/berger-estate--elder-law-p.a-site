@@ -3,37 +3,32 @@ import siteData from '@/data/site.json';
 const { footer, company, branding } = siteData;
 ---
 
-<footer class="bg-charcoal-950 text-white relative">
-  <!-- Accent line at top -->
-  <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-primary-400 to-primary-500"></div>
-  
-  <!-- Newsletter Section -->
-  {footer.newsletter && (
-    <div class="border-b border-neutral-800/50">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20">
-        <div class="max-w-xl">
-          <h3 class="font-display text-3xl md:text-4xl text-white mb-5">
-            {footer.newsletter.headline}
-          </h3>
-          <p class="text-neutral-400 mb-8 text-lg leading-relaxed">
-            {footer.newsletter.description}
-          </p>
-          <form class="flex flex-col sm:flex-row gap-4">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              class="flex-1 px-5 py-4 bg-charcoal-900/80 border border-neutral-700/50 text-white placeholder-neutral-500 focus:outline-none focus:border-primary-500 focus:bg-charcoal-900 transition-all text-lg"
-            />
-            <button 
-              type="submit"
-              class="btn-primary px-8 py-4 bg-primary-500 text-white font-semibold hover:bg-primary-600 transition-all whitespace-nowrap"
-            >
-              Sign up
-            </button>
-          </form>
-        </div>
+<!-- Cooley-style Newsletter CTA Banner (optional) -->
+{footer.newsletter && (
+  <div class="bg-primary-500 py-6">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-white text-lg font-medium">
+          {footer.newsletter.headline || `Want to receive alerts from ${company.name}?`}
+        </p>
+        <a 
+          href="/contact" 
+          class="inline-flex items-center gap-2 px-6 py-2.5 border-2 border-white text-white font-semibold hover:bg-white hover:text-primary-600 transition-all"
+        >
+          Sign up
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
       </div>
     </div>
+  </div>
+)}
+
+<footer class="bg-charcoal-950 text-white relative">
+  <!-- Accent line at top (only if no newsletter banner) -->
+  {!footer.newsletter && (
+    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-primary-400 to-primary-500"></div>
   )}
   
   <!-- Main Footer -->

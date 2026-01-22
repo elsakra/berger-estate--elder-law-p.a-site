@@ -25,14 +25,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Professional navy blue palette - works for estate, elder, family, and most law firms
+        // Cooley-inspired red palette - confident, energetic, premium
         primary: {
+          50: '#FEF2F2',
+          100: '#FEE2E2',
+          200: '#FECACA',
+          300: '#FCA5A5',
+          400: '#F87171',
+          500: '#DC2626',  // Cooley red - confident, energetic
+          600: '#B91C1C',
+          700: '#991B1B',
+          800: '#7F1D1D',
+          900: '#641E1E',
+          950: '#450A0A',
+        },
+        // Secondary navy palette - can be used for conservative firms
+        navy: {
           50: '#EEF2F7',
           100: '#D9E2ED',
           200: '#B3C5DB',
           300: '#8DA8C9',
           400: '#678BB7',
-          500: '#1E3A5F',  // Navy blue - professional, trustworthy
+          500: '#1E3A5F',
           600: '#1A3352',
           700: '#152B46',
           800: '#112339',
@@ -96,7 +110,8 @@ export default {
       boxShadow: {
         'card': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
         'card-hover': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-        'glow': '0 0 40px rgba(255, 71, 87, 0.15)',
+        'glow': '0 0 40px rgba(220, 38, 38, 0.15)',
+        'glow-red': '0 0 60px rgba(220, 38, 38, 0.2)',
       },
       animation: {
         'slide-left': 'slideLeft 30s linear infinite',
